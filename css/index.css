@@ -1,0 +1,172 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body,html{
+	margin:0px;
+	height:100%;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	background: #afa;
+	margin: 0 auto;
+	position: relative;
+}
+.leftBox{
+	position: absolute;
+	width: 50%;
+	height: 300px;
+	left: 0;
+
+
+}
+.tabContent{
+	position: relative;
+	margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+.tabContent table{
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 50%;
+	left: 50%;
+	margin-left: -100px;
+	margin-top: -100px;
+	text-align: center;
+	border:1px solid #ccc;
+}
+.tabContent table tr{
+}
+.tabContent table tr td{
+	width: 33.333%;
+	box-shadow: 2px 2px 1px #ccc inset;
+}
+.aColor{
+	background-color: #66CCCC;
+}
+.bColor{
+	background-color: #0000FF;
+}
+.cColor{
+	background-color: #FF33CC;
+}
+.dColor{
+	background-color: #663333;
+}
+.eColor{
+	background-color: #009966;
+}
+.fColor{
+	background-color: #663366;
+}
+.rightBox{
+	position: absolute;
+	width: 50%;
+	height: 300px;
+	right: 0;
+
+}
+.box1{
+	float: left;
+	width: 50%;
+	height: 100%;
+	position: relative;
+}
+.box2{
+	float: right;
+	width: 50%;
+	height: 100%;
+	position: relative;
+}
+.topPar{
+	position: relative;
+	width: 100%;
+	height: 300px;
+}
+.botPar{
+	position: relative;
+	width: 100%;
+	height: 300px;
+}
+#canvas1{
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	margin-top: -150px;
+	margin-right: -150px;
+}
+#canvas2{
+	position: absolute;
+	top: 50%;
+	right: 50%;
+	margin-top: -150px;
+	margin-right: -150px;
+}
+.allTime{
+	position: absolute;
+    width: 32px;
+    height: 20px;
+    top: 50%;
+    left: 50%;
+    margin-left: -16px;
+    margin-top: -10px;
+    background-color: #fff;
+    z-index: 9999;
+    text-align: center;
+}
+
+.linebox{
+	/*width: 105px;
+    height: 3px;
+    background: #2CB044;
+    position: absolute;
+    top: 98px;
+    left: 100px;
+    z-index: 1000;*/
+	width: 108px;
+    height: 3px;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    margin-right: -108px;
+    animation: move 36000ms infinite steps(360);
+    transform-origin: left center;
+    -webkit-transform-origin: left center;
+}
+
+/*@-webkit-keyframes changehovertree{
+	0%{-webkit-transform:rotate(0)} 
+	50%{-webkit-transform:rotate(180deg)} 
+	100%{-webkit-transform:rotate(360deg)}}
+@keyframes changehovertree{
+	0%{transform:rotate(0)}  
+	50%{transform:rotate(180deg)} 
+	100%{transform:rotate(360deg)}
+}*/
+/*旋转从0度到360度*/  
+@keyframes move {  
+	0%{transform:rotate(0)} 
+	50%{transform:rotate(180deg)} 
+	100%{transform:rotate(360deg)}}
+}
+@-webkit-keyframes move {  
+	0%{-webkit-transform:rotate(0)} 
+	50%{-webkit-transform:rotate(180deg)} 
+	100%{-webkit-transform:rotate(360deg)}}
+} 
+.clearfix{
+     zoom: 1;
+}
+.clearfix:before,
+.clearfix:after
+{
+    display: table;
+    content:" ";
+}
+.clearfix:after{
+    clear:both;
+}
