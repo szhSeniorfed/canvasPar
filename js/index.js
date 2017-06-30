@@ -40,6 +40,7 @@ var platform={
     totleTime:36000,//总时间
     degArr:[],
     degBegin:[],
+    tempDeg:0,
 	init: function(){
         this.initParm();
 	},
@@ -98,18 +99,18 @@ var platform={
     },
     begindeg:function(degArr,index){
         var dushuStart = 0;
-        var tempDeg = this.degBegin[index];
+        this.tempDeg = this.tempDeg+this.degBegin[index];
         var dushuEnd = Math.PI * (this.degBegin[index] / 180);
         for (var i = 0; i < index; i++) {
             dushuStart = dushuStart + Math.PI * (degArr[i] / 180);
             dushuEnd = dushuEnd + Math.PI * (degArr[i] / 180);
         }
         ;
-        for (var i = 0; i < index; i++) {
-            tempDeg = tempDeg + degArr[i];
-        }
+        // for (var i = 0; i < index; i++) {
+        //     tempDeg = tempDeg + degArr[i];
+        // }
         document.querySelector(".linebox").style.transform = "rotate("
-                + tempDeg + "deg)";
+                + this.tempDeg + "deg)";
         context.beginPath()
         context.sector(150, 150, 100, dushuStart, dushuEnd, false);
         context.fillStyle = this.data[index].color;
