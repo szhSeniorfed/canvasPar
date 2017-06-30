@@ -212,7 +212,7 @@ var platform={
         this.sfDegBegin+=1;
     }
 }
- CanvasRenderingContext2D.prototype.sector = function (x, y, radius, sDeg, eDeg) {
+CanvasRenderingContext2D.prototype.sector = function (x, y, radius, sDeg, eDeg) {
     // 初始保存
     this.save();
     // 位移到目标点
