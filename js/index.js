@@ -70,94 +70,8 @@ var platform={
         var eDeg = 360*Eper;
         var fDeg = 360*Fper;
         this.draw(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg);
-        this.initTable(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg);
-    },
-    //页面初始化的时候，渲染表格数据
-    initTable: function(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg){
-        var classListColor = ['aColor','bColor','cColor','dColor','eColor','fColor'];
-        var deg = [aDeg,bDeg,cDeg,dDeg,eDeg,fDeg];
-        var data = this.data;
-        var item1 = document.querySelector("#tab1 table");
-        var item2 = document.querySelector("#tab2 table");
-        var alltime = document.querySelectorAll(".topPar .rightBox .allTime");
-        var strTemp1="";
-        var strTemp2="";
-        for (var i =0 ;i<data.length;i++) {
-            strTemp1+='<tr><td class='+classListColor[i]+'>'+data[i].title+'</td><td>'+data[i].value*100+'%</td><td>'+data[i].time/1000+'</td>'
-        };
-        for (var i =0 ;i<data.length;i++) {
-            strTemp2+='<tr><td class='+classListColor[i]+'>'+data[i].title+'</td><td id=timePA'+i+'>'+data[i].time/1000+'</td><td id=timePS'+i+'>'+0+'</td>'
-        };
-        item1.innerHTML=strTemp1;
-        alltime.innerHTML = this.totleTime/1000;
-        item2.innerHTML=strTemp2;
-
-        // var waitTime =0
-        // for (var i =0 ;i<data.length;i++) {
-        //     var itemAllId = "timePA"+i;
-        //     var itemShengId = "timePS"+i;
-        //     var itemAll = document.getElementById(itemAllId);//总时间
-        //     var itemSheng = document.getElementById(itemShengId);//剩余时间
-        //     var dataTimeTempAll = this.data[i].time/1000;
-        //     setTimeout(function(){
-        //         platform.changeTime(itemAll,itemSheng,dataTimeTempAll);
-        //     },waitTime);
-        //     waitTime = waitTime+this.data[i].time;
-        // }
-        this.changeTime(document.getElementById("timePA0"),document.getElementById("timePS0"),data[0].time/1000);
-        setTimeout(function(){
-            platform.changeTime(document.getElementById("timePA1"),document.getElementById("timePS1"),data[1].time/1000);
-        },data[0].time);
-        setTimeout(function(){
-            platform.changeTime(document.getElementById("timePA2"),document.getElementById("timePS2"),data[2].time/1000);
-        },data[0].time+data[1].time);
-        setTimeout(function(){
-            platform.changeTime(document.getElementById("timePA3"),document.getElementById("timePS3"),data[3].time/1000);
-        },data[0].time+data[1].time+data[2].time);
-        setTimeout(function(){
-            platform.changeTime(document.getElementById("timePA4"),document.getElementById("timePS4"),data[4].time/1000);
-        },data[0].time+data[1].time+data[2].time+data[3].time);
-        setTimeout(function(){
-            platform.changeTime(document.getElementById("timePA5"),document.getElementById("timePS5"),data[5].time/1000);
-        },data[0].time+data[1].time+data[2].time+data[3].time+data[4].time);
-    },
-    changeTime: function(itemAll,itemSheng,dataTimeTempAll){
-        //从第一个开始，每个的总时间慢慢减少，剩余时间慢慢增加
-            
-        var dataTimeSheng = 0;
-
-        var timer = setInterval(function(){
-            if (!dataTimeTempAll) {
-                clearInterval(timer);
-                return false;
-            }
-            dataTimeTempAll=dataTimeTempAll-1;
-            dataTimeSheng=dataTimeSheng+1;
-            itemAll.innerHTML = dataTimeTempAll;
-            itemSheng.innerHTML = dataTimeSheng;
-        },1000);
     },
 	draw: function(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg){
-		var myCanvas1 = document.getElementById("canvas1");
-		myCanvas1.width = 300;
-        myCanvas1.height = 300;
-		var angle = 0.3*Math.PI;
-		var ctx = myCanvas1.getContext("2d");
-
-		var tempAngle = 0;
-        for(var i=0;i<this.data.length;i++){
-            // 开始绘制新状态的扇形
-            ctx.beginPath();
-            ctx.moveTo(150, 150);
-            ctx.fillStyle = this.data[i].color;
-            var angle = this.data[i].value*360;
-            var startAngle = tempAngle*Math.PI/180; 
-            var endAngle = (tempAngle + angle)*Math.PI/180;
-            ctx.arc(150, 150, 100, startAngle, endAngle);
-            ctx.fill();
-            tempAngle+=angle;
-        }
-
         var myCanvas2 = document.getElementById("canvas2");
         myCanvas2.width = 300;
         myCanvas2.height = 300;
@@ -173,7 +87,6 @@ var platform={
         this.start(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg);
 	},
     start:function(aDeg,bDeg,cDeg,dDeg,eDeg,fDeg){
-       // platform.aBegin(aDeg);
         var interval1 = setInterval(function(){
             if(platform.aDegBegin>aDeg){
                 clearInterval(interval1);

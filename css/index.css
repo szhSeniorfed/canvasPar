@@ -18,8 +18,6 @@ body,html{
 	width: 50%;
 	height: 300px;
 	left: 0;
-
-
 }
 .tabContent{
 	position: relative;
@@ -67,24 +65,12 @@ body,html{
 	width: 50%;
 	height: 300px;
 	right: 0;
-
 }
 .box1{
 	float: left;
 	width: 50%;
 	height: 100%;
 	position: relative;
-}
-.box2{
-	float: right;
-	width: 50%;
-	height: 100%;
-	position: relative;
-}
-.topPar{
-	position: relative;
-	width: 100%;
-	height: 300px;
 }
 .botPar{
 	position: relative;
@@ -119,13 +105,6 @@ body,html{
 }
 
 .linebox{
-	/*width: 105px;
-    height: 3px;
-    background: #2CB044;
-    position: absolute;
-    top: 98px;
-    left: 100px;
-    z-index: 1000;*/
 	width: 108px;
     height: 3px;
     background: yellow;
@@ -138,15 +117,6 @@ body,html{
     -webkit-transform-origin: left center;
 }
 
-/*@-webkit-keyframes changehovertree{
-	0%{-webkit-transform:rotate(0)} 
-	50%{-webkit-transform:rotate(180deg)} 
-	100%{-webkit-transform:rotate(360deg)}}
-@keyframes changehovertree{
-	0%{transform:rotate(0)}  
-	50%{transform:rotate(180deg)} 
-	100%{transform:rotate(360deg)}
-}*/
 /*旋转从0度到360度*/  
 @keyframes move {  
 	0%{transform:rotate(0)} 
