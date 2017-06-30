@@ -44,7 +44,6 @@ var platform={
     sfDegBegin:0,
 	init: function(){
         this.initParm();
-
 	},
     initParm: function(){
         var time = this.totleTime;//毫秒
