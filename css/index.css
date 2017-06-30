@@ -112,7 +112,7 @@ body,html{
     top: 50%;
     right: 50%;
     margin-right: -108px;
-    animation: move 36000ms infinite steps(360);
+   /* animation: move 36000ms infinite steps(360);*/
     transform-origin: left center;
     -webkit-transform-origin: left center;
 }
