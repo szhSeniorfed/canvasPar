@@ -40,7 +40,7 @@ var platform={
     totleTime:36000,//总时间
     degArr:[],
     degBegin:[],
-    tempDeg:0,
+    tempDeg:[],
 	init: function(){
         this.initParm();
 	},
@@ -48,6 +48,12 @@ var platform={
         for(var i=0;i<this.data.length;i++){
             this.degArr.push(this.data[i].value*360);
             this.degBegin.push(0);
+            this.tempDeg.push(0);
+        }
+        for (var i = 0; i < this.data.length; i++) {
+            for(var j=0;j<i;j++){
+                this.tempDeg[i] = this.tempDeg[i] + this.degArr[j];
+            }
         }
         this.draw(this.degArr);
     },
@@ -72,10 +78,13 @@ var platform={
                 var interval1 = setInterval(function(){
                     if(platform.degBegin[0]>degArr[0]){
                         platform.degBegin[0]=0;
+                        console.log("结束第"+i+"个");
                         clearInterval(interval1);
                     }
                     platform.begindeg(degArr,0);
+                    console.log("第"+i+"个");
                 },this.data[0].time/degArr[0]);
+              
             }else{
                 var waitTime = 0;
                 for(var j=0;j<i;j++){
@@ -87,11 +96,13 @@ var platform={
                         platform.degBegin[i]=0;
                         var interval2 = setInterval(function(){
                         if(platform.degBegin[i]>degArr[i]){
+                            console.log("结束第"+i+"个");
                             platform.degBegin[i]=0;
                             clearInterval(interval2);
                         }
                         platform.begindeg(degArr,i);
                         },platform.data[i].time/degArr[i]);
+                        console.log("第"+i+"个");
                     },waitTime);
                 })(i);
             }
@@ -99,18 +110,17 @@ var platform={
     },
     begindeg:function(degArr,index){
         var dushuStart = 0;
-        this.tempDeg = this.tempDeg+this.degBegin[index];
+        var temp=this.degBegin[index];
         var dushuEnd = Math.PI * (this.degBegin[index] / 180);
         for (var i = 0; i < index; i++) {
             dushuStart = dushuStart + Math.PI * (degArr[i] / 180);
             dushuEnd = dushuEnd + Math.PI * (degArr[i] / 180);
+        };
+        for (var i = 0; i < index; i++) {
+            temp = temp + degArr[i];
         }
-        ;
-        // for (var i = 0; i < index; i++) {
-        //     tempDeg = tempDeg + degArr[i];
-        // }
         document.querySelector(".linebox").style.transform = "rotate("
-                + this.tempDeg + "deg)";
+                + temp + "deg)";
         context.beginPath()
         context.sector(150, 150, 100, dushuStart, dushuEnd, false);
         context.fillStyle = this.data[index].color;
